@@ -1,0 +1,47 @@
+BONUS CHALLENGE FORM
+--------------------
+
+For each bonus challenge you have implemented, please replace the sentence "We are not entitled to this bonus."
+with a short description of:
+
+1. How it was implemented in your code
+2. Where it was used (in which class methods).
+3. How you tested that it is working correctly.
+
+--------------------
+
+1. Fully supporting all configuration fields and avoiding the use of magic numbers
+
+1. we did it using the the numbers declered at the env.config. 
+2. Player: createArtificialIntelligence(), point(), penalty(), placeToken()
+dealer: sleepUntilWokenOrTimeout(), updateTimerDisplay(), removeAllCardsFromTable(), announceWinners()
+table: removeCard()
+3. it have complied
+
+--------------------
+
+2. Terminating all threads (that you created) gracefully and in reverse order to the order they were created in.
+
+1. It is implemented using join() command that allow to contarol the flow of the thereds. The ui thered or the end of the time,
+indicate the dealer that the game should stop, then the deler indicate the players' thereds, the players' thered indicate at ai thered, then finisih itself. 
+When one thered indicate other thered it use join() on that thered, meaning wait for him to close before contionoue.
+2. dealer.terminate(), player.terminate()
+3. we used printing so that every thered that was termonated will print that.
+--------------------
+
+3. Handling the config.turnTimeoutMillis value as follows:
+config.turnTimeoutMillis < 0: display nothing.
+config.turnTimeoutMillis = 0: display a timer since the last action (reshuffle or set collected).
+Note: in modes without a countdown timer the dealer must ensure there is always at least one legal set on the table.
+
+We are not entitled to this bonus.
+
+--------------------
+
+4. Making sure that the threads do not wake up unless some actual job needs to be done (e.g., a value needs to be
+changed on the display, key input needs to be handled, etc.) and the only threads created by you are:
+1 thread per player + 1 additional thread for non-human players.
+
+1. we used blocking que and poll() command to block thereds that cant contioune to work but still notiofy when they can. 
+2. dealer.sleepUntilWokenOrTimeout(), playet.createArtificialIntelligence(), player.placeToken()
+3. We used the debag thereds monitor. 
